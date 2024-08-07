@@ -80,7 +80,7 @@ function ApplicationList() {
                     placeholder="Search by company or position"
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
-                    className="p-2 border border-gray-300 rounded-full w-1/4"
+                    className="p-2 border border-gray-300 rounded-full w-full lg:w-1/4"
                 />
             </div>
             
