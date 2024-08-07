@@ -10,15 +10,6 @@ function App() {
     const [isFormOpen, setIsFormOpen] = useState(false);
 
     useEffect(() => {
-        console.log("Firebase config: ", {
-            apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
-            authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
-            projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
-            storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
-            messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
-            appId: process.env.REACT_APP_FIREBASE_APP_ID,
-        });
-
         const unsubscribe = onAuthStateChanged(auth, (user) => {
             setUser(user);
         });
@@ -43,12 +34,15 @@ function App() {
         <div className="min-h-screen bg-gray-100 flex flex-col">
             {user ? (
                 <div className="flex flex-col flex-1">
-                    <header className="bg-blue-600 p-4 text-white shadow-lg flex flex-col md:flex-row justify-between items-center">
-                        <div className="flex items-center space-x-4">
-                            <img src={user.photoURL} alt="User" className="w-10 h-10 rounded-full" />
+                    <header className="bg-blue-600 p-4 px-6 sm:px-12 md:px-20 text-white shadow-lg flex flex-col md:flex-row justify-between items-center">
+                        <div className="flex items-center space-x-4 mb-4 md:mb-0">
+                            <img src={user.photoURL} alt="User" className="w-12 h-12 rounded-full" />
                             <h1 className="text-xl font-bold">Welcome, {user.displayName}!</h1>
                         </div>
-                        <button onClick={() => auth.signOut()} className="flex items-center bg-red-500 px-4 py-2 mt-4 md:mt-0 rounded text-white hover:bg-red-600">
+                        <button 
+                            onClick={() => auth.signOut()} 
+                            className="flex items-center bg-red-500 px-4 py-2 rounded text-white hover:bg-red-600 transition duration-300"
+                        >
                             <FaSignOutAlt className="mr-2" /> Sign Out
                         </button>
                     </header>
@@ -69,7 +63,12 @@ function App() {
                 <div className="flex items-center justify-center flex-1 p-4">
                     <div className="text-center bg-white p-6 rounded shadow-md w-full max-w-sm">
                         <h1 className="text-3xl font-bold mb-4">Please Sign In</h1>
-                        <button onClick={handleSignIn} className="bg-blue-500 px-4 py-2 rounded text-white hover:bg-blue-600 w-full">Sign in with Google</button>
+                        <button 
+                            onClick={handleSignIn} 
+                            className="bg-blue-500 px-4 py-2 rounded text-white hover:bg-blue-600 w-full transition duration-300"
+                        >
+                            Sign in with Google
+                        </button>
                     </div>
                 </div>
             )}
