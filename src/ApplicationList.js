@@ -6,6 +6,7 @@ import { FaTrash } from 'react-icons/fa';
 function ApplicationList() {
     const [applications, setApplications] = useState([]);
     const [filter, setFilter] = useState('All');
+    const [searchTerm, setSearchTerm] = useState('');
 
     useEffect(() => {
         const fetchApplications = async () => {
@@ -59,13 +60,30 @@ function ApplicationList() {
         }
     };
 
-    const filteredApplications = filter === 'All' ? applications : applications.filter(app => app.response === filter);
+    const filteredApplications = applications
+        .filter(app => filter === 'All' || app.response === filter)
+        .filter(app => 
+            app.companyName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            app.position.toLowerCase().includes(searchTerm.toLowerCase())
+        )
+        .sort((a, b) => new Date(b.dateApplied) - new Date(a.dateApplied));
 
     const applicationCount = filteredApplications.length;
 
     return (
         <div className="p-4">
             <h2 className="text-xl font-bold mb-4">Application List (Total: {applicationCount})</h2>
+            
+            <div className="mb-4 ">
+                <input
+                    type="text"
+                    placeholder="Search by company or position"
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                    className="p-2 border border-gray-300 rounded-full w-1/4"
+                />
+            </div>
+            
             <div className="flex flex-wrap mb-4 gap-2">
                 {['All', 'Review', 'Accept', 'Reject', 'Coding Round Complete', 'Interview Round Complete'].map(category => (
                     <button
@@ -77,6 +95,7 @@ function ApplicationList() {
                     </button>
                 ))}
             </div>
+            
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                 {filteredApplications.map((app) => (
                     <div key={app.id} className={`p-4 shadow rounded ${getResponseColor(app.response)} transition duration-300`}>
