@@ -4,6 +4,7 @@ import { auth, provider } from './firebase';
 import ApplicationList from './ApplicationList';
 import ApplicationForm from './ApplicationForm';
 import { FaSignOutAlt, FaPlus } from 'react-icons/fa';
+import { motion } from 'framer-motion';
 
 function App() {
     const [user, setUser] = useState(null);
@@ -18,11 +19,9 @@ function App() {
     }, []);
 
     const handleSignIn = () => {
-        console.log("Sign in with Google clicked");
         signInWithPopup(auth, provider)
             .then((result) => {
                 setUser(result.user);
-                console.log("User signed in: ", result.user);
             })
             .catch((error) => {
                 console.error('Error signing in with Google:', error);
@@ -61,15 +60,26 @@ function App() {
                 </div>
             ) : (
                 <div className="flex items-center justify-center flex-1 p-4">
-                    <div className="text-center bg-white p-6 rounded shadow-md w-full max-w-sm">
-                        <h1 className="text-3xl font-bold mb-4">Please Sign In</h1>
+                    <motion.div
+                        className="text-center bg-white p-8 rounded-lg shadow-lg w-full max-w-md"
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.6 }}
+                    >
+                        <h1 className="text-4xl font-bold mb-4 text-blue-700">Welcome Back!</h1>
+                        <p className="text-lg mb-6 text-gray-700">
+                            Sign in to continue tracking your applications and stay organized.
+                        </p>
                         <button 
                             onClick={handleSignIn} 
-                            className="bg-blue-500 px-4 py-2 rounded text-white hover:bg-blue-600 w-full transition duration-300"
+                            className="bg-blue-500 px-6 py-3 rounded text-white hover:bg-blue-600 w-full transition duration-300"
                         >
-                            Sign in with Google
+                            <FaPlus className="mr-2 inline" /> Sign in with Google
                         </button>
-                    </div>
+                        <p className="text-sm mt-4 text-gray-500">
+                            By logging in or signing up using the options above, you agree to our <a href="/terms" className="text-blue-500 hover:underline">Terms & Conditions</a> and <a href="/privacy" className="text-blue-500 hover:underline">Privacy Policy</a>.
+                        </p>
+                    </motion.div>
                 </div>
             )}
         </div>
