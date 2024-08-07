@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { collection, addDoc } from 'firebase/firestore';
 import { db } from './firebase';
 import { FaTimes } from 'react-icons/fa';
+import { useAuth } from './AuthProvider'; // Assume you have an AuthProvider component
 
 function ApplicationForm({ onClose }) {
     const [companyName, setCompanyName] = useState('');
@@ -9,6 +10,7 @@ function ApplicationForm({ onClose }) {
     const [dateApplied, setDateApplied] = useState('');
     const [notes, setNotes] = useState('');
     const [location, setLocation] = useState('');
+    const { user } = useAuth();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -21,6 +23,7 @@ function ApplicationForm({ onClose }) {
                 notes,
                 location,
                 response: 'Review',  // Default response
+                userId: user.uid,   // Add userId to the application
             });
             setCompanyName('');
             setPosition('');
