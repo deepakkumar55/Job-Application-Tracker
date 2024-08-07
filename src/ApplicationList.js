@@ -66,18 +66,16 @@ function ApplicationList() {
     return (
         <div className="p-4">
             <h2 className="text-xl font-bold mb-4">Application List (Total: {applicationCount})</h2>
-            <div className="flex justify-between mb-4">
-                <div className="flex space-x-2">
-                    {['All', 'Review', 'Accept', 'Reject', 'Coding Round Complete', 'Interview Round Complete'].map(category => (
-                        <button
-                            key={category}
-                            onClick={() => setFilter(category)}
-                            className={`px-4 py-2 rounded ${filter === category ? 'bg-blue-500 text-white' : 'bg-gray-300 text-black'} hover:bg-blue-600 transition duration-300`}
-                        >
-                            {category}
-                        </button>
-                    ))}
-                </div>
+            <div className="flex flex-wrap justify-between mb-4 gap-2">
+                {['All', 'Review', 'Accept', 'Reject', 'Coding Round Complete', 'Interview Round Complete'].map(category => (
+                    <button
+                        key={category}
+                        onClick={() => setFilter(category)}
+                        className={`px-4 py-2 rounded ${filter === category ? 'bg-blue-500 text-white' : 'bg-gray-300 text-black'} hover:bg-blue-600 transition duration-300`}
+                    >
+                        {category}
+                    </button>
+                ))}
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                 {filteredApplications.map((app) => (
@@ -87,11 +85,11 @@ function ApplicationList() {
                         <p className="mb-2"><strong>Date Applied:</strong> {app.dateApplied}</p>
                         <p className="mb-2"><strong>Location:</strong> {app.location}</p>
                         <p className="mb-2"><strong>Notes:</strong> {app.notes}</p>
-                        <div className="flex justify-between items-center mt-2">
+                        <div className="flex flex-col sm:flex-row justify-between items-start mt-2">
                             <select
                                 value={app.response}
                                 onChange={(e) => handleResponseChange(app.id, e.target.value)}
-                                className="p-2 border border-gray-300 rounded"
+                                className="p-2 border border-gray-300 rounded mb-2 sm:mb-0 sm:w-1/2"
                             >
                                 <option value="Review">Review</option>
                                 <option value="Accept">Accept</option>
