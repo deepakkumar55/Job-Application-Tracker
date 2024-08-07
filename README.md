@@ -1,70 +1,117 @@
-# Getting Started with Create React App
+# Job Application Tracker
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to the Job Application Tracker project! This web application helps you manage and track job applications, including their status, company details, and more. 
 
-## Available Scripts
+## Table of Contents
 
-In the project directory, you can run:
+- [Introduction](#introduction)
+- [Features](#features)
+- [Getting Started](#getting-started)
+- [Contributing](#contributing)
 
-### `npm start`
+## Introduction
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+The Job Application Tracker allows users to:
+- Add and manage job applications
+- Track application status (Review, Accept, Reject)
+- View and edit application details
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Features
 
-### `npm test`
+- User Authentication with Firebase
+- Add and manage job applications
+- Display recent applications
+- Application details with notes
+- Styled using Tailwind CSS
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Getting Started
 
-### `npm run build`
+To set up the project locally, follow these steps:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Prerequisites
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Make sure you have the following installed:
+- [Node.js](https://nodejs.org/) (version 14 or later)
+- [npm](https://www.npmjs.com/) (comes with Node.js)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Installation
 
-### `npm run eject`
+1. **Clone the Repository:**
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+   ```bash
+   git clone https://github.com/deepakkumar55/job-application-tracker.git
+   cd job-application-tracker
+   ```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+2. **Install Dependencies:**
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+   ```bash
+   npm install
+   ```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+3. **Set Up Firebase:**
 
-## Learn More
+   - Create a Firebase project at [Firebase Console](https://console.firebase.google.com/).
+   - Add your Firebase configuration to `src/firebase.js`.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+4. **Start the Development Server:**
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+   ```bash
+   npm start
+   ```
 
-### Code Splitting
+   Open your browser and navigate to `http://localhost:3000` to view the application.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Contributing
 
-### Analyzing the Bundle Size
+We welcome contributions to the Job Application Tracker project! Here’s how you can contribute:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Reporting Issues
 
-### Making a Progressive Web App
+If you encounter any issues or bugs, please report them by creating an [issue](https://github.com/your-username/job-application-tracker/issues) on GitHub.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### Submitting Pull Requests
 
-### Advanced Configuration
+1. **Fork the Repository:**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+   Click the "Fork" button at the top right of the repository page.
 
-### Deployment
+2. **Clone Your Fork:**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+   ```bash
+   git clone https://github.com/your-username/job-application-tracker.git
+   ```
 
-### `npm run build` fails to minify
+3. **Create a Branch:**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+   ```bash
+   git checkout -b feature/your-feature-name
+   ```
+
+4. **Make Changes and Commit:**
+
+   ```bash
+   git add .
+   git commit -m "Add your commit message"
+   ```
+
+5. **Push to Your Fork:**
+
+   ```bash
+   git push origin feature/your-feature-name
+   ```
+
+6. **Create a Pull Request:**
+
+   Go to the original repository on GitHub and click the "Compare & pull request" button.
+
+### Testing
+
+Ensure your changes do not break existing functionality by running tests:
+
+```bash
+npm test
+```
+
+
+Thank you for contributing to the Job Application Tracker project!
