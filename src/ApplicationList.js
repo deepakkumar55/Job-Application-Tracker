@@ -50,6 +50,10 @@ function ApplicationList() {
                 return 'bg-green-200';
             case 'Reject':
                 return 'bg-red-200';
+            case 'Coding Round Complete':
+                return 'bg-blue-200';
+            case 'Interview Round Complete':
+                return 'bg-purple-200';
             default:
                 return 'bg-white';
         }
@@ -57,12 +61,14 @@ function ApplicationList() {
 
     const filteredApplications = filter === 'All' ? applications : applications.filter(app => app.response === filter);
 
+    const applicationCount = filteredApplications.length;
+
     return (
         <div className="p-4">
-            <h2 className="text-xl font-bold mb-4">Application List</h2>
+            <h2 className="text-xl font-bold mb-4">Application List (Total: {applicationCount})</h2>
             <div className="flex justify-between mb-4">
                 <div className="flex space-x-2">
-                    {['All', 'Review', 'Accept', 'Reject'].map(category => (
+                    {['All', 'Review', 'Accept', 'Reject', 'Coding Round Complete', 'Interview Round Complete'].map(category => (
                         <button
                             key={category}
                             onClick={() => setFilter(category)}
@@ -79,6 +85,7 @@ function ApplicationList() {
                         <h3 className="text-lg font-bold mb-2">{app.companyName}</h3>
                         <p className="mb-2"><strong>Position:</strong> {app.position}</p>
                         <p className="mb-2"><strong>Date Applied:</strong> {app.dateApplied}</p>
+                        <p className="mb-2"><strong>Location:</strong> {app.location}</p>
                         <p className="mb-2"><strong>Notes:</strong> {app.notes}</p>
                         <div className="flex justify-between items-center mt-2">
                             <select
@@ -89,6 +96,8 @@ function ApplicationList() {
                                 <option value="Review">Review</option>
                                 <option value="Accept">Accept</option>
                                 <option value="Reject">Reject</option>
+                                <option value="Coding Round Complete">Coding Round Complete</option>
+                                <option value="Interview Round Complete">Interview Round Complete</option>
                             </select>
                             <button
                                 onClick={() => handleDelete(app.id)}
