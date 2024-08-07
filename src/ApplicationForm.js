@@ -8,6 +8,7 @@ function ApplicationForm({ onClose }) {
     const [position, setPosition] = useState('');
     const [dateApplied, setDateApplied] = useState('');
     const [notes, setNotes] = useState('');
+    const [location, setLocation] = useState('');
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -18,12 +19,14 @@ function ApplicationForm({ onClose }) {
                 position,
                 dateApplied,
                 notes,
+                location,
                 response: 'Review',  // Default response
             });
             setCompanyName('');
             setPosition('');
             setDateApplied('');
             setNotes('');
+            setLocation('');
             alert('Application added successfully!');
             onClose();  // Close the modal after submitting
         } catch (error) {
@@ -66,6 +69,16 @@ function ApplicationForm({ onClose }) {
                             type="date"
                             value={dateApplied}
                             onChange={(e) => setDateApplied(e.target.value)}
+                            className="mt-1 p-2 border border-gray-300 rounded w-full"
+                            required
+                        />
+                    </div>
+                    <div className="mb-4">
+                        <label className="block text-gray-700">Location:</label>
+                        <input
+                            type="text"
+                            value={location}
+                            onChange={(e) => setLocation(e.target.value)}
                             className="mt-1 p-2 border border-gray-300 rounded w-full"
                             required
                         />
