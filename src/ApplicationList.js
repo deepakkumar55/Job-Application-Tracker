@@ -66,7 +66,7 @@ function ApplicationList() {
     return (
         <div className="p-4">
             <h2 className="text-xl font-bold mb-4">Application List (Total: {applicationCount})</h2>
-            <div className="flex flex-wrap justify-between mb-4 gap-2">
+            <div className="flex flex-wrap mb-4 gap-2">
                 {['All', 'Review', 'Accept', 'Reject', 'Coding Round Complete', 'Interview Round Complete'].map(category => (
                     <button
                         key={category}
